@@ -81,10 +81,10 @@ def fetch_popup_meta(popup_id: int) -> Optional[dict]:
 
     # __NEXT_F 스크립트에서 openDate/closeDate 추출
     open_date, close_date = None, None
-    match = re.search(r'"openDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"', resp.text)
+    match = re.search(r'openDate\\*"?\s*:\s*\\*"?(\d{4}-\d{2}-\d{2})', resp.text)
     if match:
         open_date = match.group(1)
-    match = re.search(r'"closeDate"\s*:\s*"(\d{4}-\d{2}-\d{2})"', resp.text)
+    match = re.search(r'closeDate\\*"?\s*:\s*\\*"?(\d{4}-\d{2}-\d{2})', resp.text)
     if match:
         close_date = match.group(1)
 
