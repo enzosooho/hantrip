@@ -7,6 +7,7 @@ import sys
 
 from crawlers.popply import crawl as crawl_popply
 from crawlers.thehyundai import crawl as crawl_thehyundai
+from crawlers.popga import crawl as crawl_popga
 
 
 def main():
@@ -21,6 +22,11 @@ def main():
         raw_data.extend(crawl_thehyundai(max_items=20))
     except Exception as e:
         print(f"[더현대] 크롤러 오류: {e}", file=sys.stderr)
+
+    try:
+        raw_data.extend(crawl_popga(max_items=30))
+    except Exception as e:
+        print(f"[Popga] 크롤러 오류: {e}", file=sys.stderr)
 
     # HTML 필드 제거 (JSON 크기 축소)
     for item in raw_data:

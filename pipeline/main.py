@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 
 from crawlers.popply import crawl as crawl_popply
 from crawlers.thehyundai import crawl as crawl_thehyundai
+from crawlers.popga import crawl as crawl_popga
 from llm_processor import process_batch
 from notion_loader import load_to_notion
 
@@ -37,6 +38,11 @@ def main():
         raw_data.extend(crawl_thehyundai(max_items=20))
     except Exception as e:
         print(f"[더현대] 크롤러 오류: {e}")
+
+    try:
+        raw_data.extend(crawl_popga(max_items=30))
+    except Exception as e:
+        print(f"[Popga] 크롤러 오류: {e}")
 
     if not raw_data:
         print("수집된 데이터가 없습니다. 파이프라인을 종료합니다.")
