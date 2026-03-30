@@ -1,10 +1,7 @@
 name: Collect Popup Stores
 
 on:
-  schedule:
-    # 매주 월요일 오전 9시 (KST) = 일요일 자정 (UTC)
-    - cron: "0 0 * * 1"
-  workflow_dispatch: # 수동 실행 가능
+  workflow_dispatch: # 수동 실행 가능 (스케줄은 Claude Code 원격 트리거로 대체)
 
 jobs:
   collect:
